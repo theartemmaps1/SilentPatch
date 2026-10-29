@@ -4288,7 +4288,7 @@ namespace SpeechSystemFixes
 	static bool __fastcall PedIsReadyForConversation_CheckAlive(CPed* ped, void*, bool bCheckWantedLevel)
 	{
 		const int32_t pedState = ped->GetPedState();
-		if (pedState == 54 || pedState == 55) // PEDSTATE_DIE || PEDSTATE_DEAD
+		if (!ped->IsAlive() || ped->m_nHealth <= 0.1f)
 		{
 			return false;
 		}
